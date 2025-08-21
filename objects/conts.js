@@ -1,6 +1,6 @@
 // the variables created with let is possible that we can reassing its value later on in our sript (see the example in "grade-calc.js")
 
-//the variables created with const cannot be reassing 
+//the variables created with const cannot be reassing (cuando vemos una const sabemos que el valor de la variable no va a cambiar)
 const isRaining = true
 
 isRaining = false
