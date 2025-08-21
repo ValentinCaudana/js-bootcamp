@@ -2,9 +2,9 @@
 // 15/20 -> you got a C (75%)!
 // A 90-100, B 80-89, C 70-79, D 60-69, F 0-59
 
-let gradeCalc = function (score, totalScore){
-    let percent = (score / totalScore) * 100 
-    let letterGrade = ``
+const gradeCalc = function (score, totalScore){ //se mantiene a lo largo del script
+    const percent = (score / totalScore) * 100  //siempre se aplica de la misma forma a lo largo del script
+    let letterGrade = ``// aqui no podemos poner const porque en cada if le asignamos que cambie
 
 //    if (percent >= 90) {
 //       return `You got a A (${percent}%)`
@@ -34,6 +34,6 @@ let gradeCalc = function (score, totalScore){
 
 }
 
-let scoreText = gradeCalc(10, 20)
+const  scoreText = gradeCalc(10, 20) // aqui siempre se mantiene igual ya que despues de esto no le pedimos que cambie nada
 
 console.log(scoreText)
