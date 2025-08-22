@@ -16,5 +16,13 @@ const notes = [`Note 1`, `Note 2`, `Note 3`]
 
 notes[2] = `This is now the new note 3` //we replace de item that we call
 
+/*.forEach our callback function gets called one time for each in the array.
+The callback function gets called with the individual array item and the index for that item
+*/
+notes.forEach(function (item, index){
+    console.log(index)// bring the number in the index (this case=0)
+    console.log(item)// bring the item exaqli the same that in the array
+})
+
 console.log(notes.length)
 console.log(notes)
