@@ -8,7 +8,17 @@ todos.shift()
 
 console.log(`You have ${todos.length} todos.`)
 
-todos.forEach(function (item, index) {
+todos.forEach(function (todo, index) {
     const num = index + 1
-    console.log(`${num}. ${item}`)
+    console.log(`${num}. ${todo}`)
 })
+
+//1. Order cat food
+//2. Clean kitchen
+//...
+
+for (let count = 0; count < todos.length; count++ ) {
+    const num = count + 1
+    const todo = todos[count]
+    console.log(`${num}. ${todo}`)
+}

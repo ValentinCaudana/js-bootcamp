@@ -26,3 +26,17 @@ notes.forEach(function (item, index){
 
 console.log(notes.length)
 console.log(notes)
+
+// Counting ... 1
+// for (1.initializer; 2.the condition; 3.final expression) 
+//1. lest you setup the starting poing  
+//2. is what determines if the for statement shoul loop again(if is true the loop run) - 
+//3. runs after an iteration of the loop.(increment our counter so we can move on the next item)
+/*
+for (let count = 0; count <= 2; count++) {
+    console.log(count)
+}
+
+for (let count = notes.length - 1; count >= 0; count--) {
+ console.log(notes[count])
+}*/
