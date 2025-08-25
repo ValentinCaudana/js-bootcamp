@@ -1,24 +1,32 @@
-const todos = [`walk the dog`, `ride a bike`, `run with friends`, `buy food`, `help my mother` ]
+const todos = [{
+    text: `Walk the dog`,
+    completed: true
+}, { 
+    text:`Ride a bike`,
+    completed: false
+}, { 
+    text:`Run with friends`,
+    cmpleted: false
+}, { 
+    text:`Buy food`,
+    completed: true 
+}, { 
+    text:`Help my mother`,
+    completed: false
+ }]
 
+// 1. Convert array to array of objects -> tex, completed
+// 2. Create function to remove a todo by text value
 
+const deleteTodo = function (todos, todoTex) { 
+   const index = todos.findIndex(function (todo) {
+        return todo.text.toLowerCase() === todoTex.toLowerCase()
+    })
 
-todos.splice(2 , 1)
-todos.push(`New thing todo`)
-todos.shift()
-
-console.log(`You have ${todos.length} todos.`)
-
-todos.forEach(function (todo, index) {
-    const num = index + 1
-    console.log(`${num}. ${todo}`)
-})
-
-//1. Order cat food
-//2. Clean kitchen
-//...
-
-for (let count = 0; count < todos.length; count++ ) {
-    const num = count + 1
-    const todo = todos[count]
-    console.log(`${num}. ${todo}`)
+    if (index > -1) {
+        todos.splice(index, 1)
+    }
 }
+
+deleteTodo(todos, `buy foaod`)
+console.log(todos)

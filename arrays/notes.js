@@ -1,4 +1,4 @@
-const notes = [{}, {
+const notes = [{
     title: 'My next trip',
     body: 'I would like to go to Spain'
 }, {
@@ -32,10 +32,10 @@ notes.forEach(function (item, index){
     console.log(index)// bring the number in the index (this case=0)
     console.log(item)// bring the item exaqli the same that in the array
 })*/
-
+/*
 console.log(notes.length)
 console.log(notes)
-
+*/
 // Counting ... 1
 // for (1.initializer; 2.the condition; 3.final expression) 
 //1. lest you setup the starting poing  
@@ -50,8 +50,25 @@ for (let count = notes.length - 1; count >= 0; count--) {
  console.log(notes[count])
 }*/
 
-//console.log(notes.indexOf({}))// bring the position of the item that we call (1)
+/*//console.log(notes.indexOf({}))// bring the position of the item that we call (1)
 const index = notes.findIndex(function (note, index){// allow us to provide our own definition of what makes two things equal 
     return note.title === `Habbits to work on`// vulue title return true from the callback function when you've found the match
 })
-console.log(index)
+console.log(index)*/
+// The fin provide a callback function that returns true for a match and false otherwise. the diference with findIndex is that return the index while find returns the item itself
+const findNote = function (notes, noteTitle) {
+    return notes.find(function (note, index) {
+        return note.title.toLowerCase() === noteTitle.toLowerCase()
+    })
+}
+
+
+/*const findNote = function (notes, noteTitle) {
+    const index = notes.findIndex(function (note, index) {
+        return note.title.toLowerCase() === noteTitle.toLowerCase()
+    })
+    return notes(index) 
+}*/
+
+const note = findNote(notes, `office modification`)
+console.log(note)
