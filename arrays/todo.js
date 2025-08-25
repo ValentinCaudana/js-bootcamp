@@ -18,7 +18,7 @@ const todos = [{
 // 1. Convert array to array of objects -> tex, completed
 // 2. Create function to remove a todo by text value
 
-const deleteTodo = function (todos, todoTex) { 
+/*const deleteTodo = function (todos, todoTex) { 
    const index = todos.findIndex(function (todo) {
         return todo.text.toLowerCase() === todoTex.toLowerCase()
     })
@@ -26,7 +26,17 @@ const deleteTodo = function (todos, todoTex) {
     if (index > -1) {
         todos.splice(index, 1)
     }
+}*/
+
+const getThingsTodo= function(todos){
+    return todos.filter(function (todos){
+        return todos.completed === false
+        //return !todos.completed (is the same that above)
+    })
 }
 
-deleteTodo(todos, `buy foaod`)
-console.log(todos)
+
+console.log(getThingsTodo(todos))
+
+//deleteTodo(todos, `buy foaod`)
+//console.log(todos)
