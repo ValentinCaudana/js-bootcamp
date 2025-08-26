@@ -9,6 +9,18 @@ const notes = [{
     body: 'Get a new seat'
 }]
 
+const sortNotes = function (notes) {
+    notes.sort(function (a, b) { 
+        if (a.title.toLowerCase() < b.title.toLowerCase()) {
+            return -1
+        } else if (b.title.toLowerCase() < a.title.toLowerCase()){
+            return 1
+        } else {
+            return 0
+        }
+    })
+}
+
 //console.log(notes) // bring all the note
 //console.log(notes.length) // number of how many items we have
 //console.log(notes[0]) // bring an especific item (0,1,2)
@@ -76,7 +88,10 @@ const findNotes= function (notes, query){
     })
 }
 
-console.log(findNotes(notes, `office`))
+//console.log(findNotes(notes, `office`))
 
-const note = findNote(notes, `as office modification`)
-console.log(note)
+//const note = findNote(notes, `as office modification`)
+//console.log(note)
+
+sortNotes(notes)
+console.log(notes)
