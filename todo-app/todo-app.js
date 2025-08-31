@@ -27,7 +27,7 @@ ps.forEach(function(p){
 // You have 2 todos left (p element)
 // Add a p for each todo above (use text value)
 
-const incompleteTodos = todos.filter (function (todos){
+const incompleteTodos = todos.filter (function (todos){ // we creat the .filter to see the thing that we need in the arrat-object
    return !todos.completed 
 })
 
@@ -36,9 +36,17 @@ sumary.textContent = `You have ${incompleteTodos.length} todos left.`
 document.querySelector('body').appendChild(sumary)
 
 
-todos.forEach (function (todo){
-   const p = document.createElement('p')
+todos.forEach (function (todo){ // first we call the function with .forEach for to see all the array-object
+   const p = document.createElement('p') 
    p.textContent = todo.text
    document.querySelector('body').appendChild(p)
 })
+/* added the button from here
+const addButton = document.createElement('button')
+addButton.textContent = 'New Button'
+document.querySelector('body').appendChild(addButton)
+*/
 
+document.querySelector('button').addEventListener('click' ,function (e) {
+   console.log('Add a new todo ...')
+})
