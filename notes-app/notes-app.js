@@ -29,8 +29,25 @@ newParagraph.textContent = 'This is a new element from JS'// we write the value 
 document.querySelector('body').appendChild(newParagraph) // we add in the body, 1. we call the place that we want to add - 2. we call the value
 */
 
-document.querySelector('button').addEventListener('click', function (e){ // we add a button and we asig a function // (1.how we call"a click", 2. what we want to answer)
+document.querySelector('#create-note').addEventListener('click', function (e){ // we add a button and we asig a function // (1.how we call"a click", 2. what we want to answer)
     //console.log('Did this work?')// answer
     //console.log(e)// we call the event (this is all the thing happen)
     e.target.textContent = 'The button was clicked' // we asig that when we click change the nambe of the button 
 })
+
+document.querySelector('#remove-all').addEventListener('click', function (e) {
+    document.querySelectorAll('.note').forEach(function (note){
+        note.remove()
+    })
+})
+
+// -- Single --
+// p
+// #replace
+// .item
+
+// -- Multiple -- (always we call the thing(p-h1-button-etc) before the id or class)
+// p#order
+// button.inventory
+// h1#title.application
+// h1.application#title
