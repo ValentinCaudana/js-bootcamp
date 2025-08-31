@@ -1,3 +1,13 @@
+const notes = [{
+    title: 'My next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]
 // DOM - Document Object Model
 
 // Query and remove
@@ -12,3 +22,8 @@ ps.forEach(function (p){
     // console.log(p.textContent) // we write in the console
     // p.remove() // we delete all the values that we call "p"
 })
+
+//Add new element
+const newParagraph = document.createElement('p') // we create the new value
+newParagraph.textContent = 'This is a new element from JS'// we write the value that we want 
+document.querySelector('body').appendChild(newParagraph) // we add in the body, 1. we call the place that we want to add - 2. we call the value
