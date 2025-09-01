@@ -41,7 +41,7 @@ document.querySelector('#remove-all').addEventListener('click', function (e) {
     })
 })
 
-// -- Single --
+/* -- Single --
 // p
 // #replace
 // .item
@@ -50,4 +50,8 @@ document.querySelector('#remove-all').addEventListener('click', function (e) {
 // p#order
 // button.inventory
 // h1#title.application
-// h1.application#title
+// h1.application#title*/
+
+document.querySelector('#search-text').addEventListener('input', function(e){ //"change" we call when we touch in another places in the window // "input we call every single change"
+    console.log(e.target.value) // we call the element, and after that we go inside and see the target and we call the value that we write in the target
+})

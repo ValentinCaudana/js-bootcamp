@@ -47,6 +47,11 @@ addButton.textContent = 'New Button'
 document.querySelector('body').appendChild(addButton)
 */
 
+// Listen for new todo creation
 document.querySelector('#first-button').addEventListener('click' ,function (e) {
    console.log('Add a new todo ...')
+})
+
+document.querySelector('#add-todo').addEventListener('change', function(e){
+    console.log(e.target.value)
 })
