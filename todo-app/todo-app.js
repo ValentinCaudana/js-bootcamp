@@ -24,8 +24,15 @@ ps.forEach(function(p){
         p.remove() // if the condition is true we remove the p that include 'the'
    }
 })*/
-// You have 2 todos left (p element)
-// Add a p for each todo above (use text value)
+const filters = {
+    searchText: ''
+}
+
+const renderNotes = function (notes, filters){
+    const filterNotes= notes.filter(function (note){
+        
+    })
+}
 
 const incompleteTodos = todos.filter (function (todos){ // we creat the .filter to see the thing that we need in the arrat-object
    return !todos.completed 
@@ -52,6 +59,6 @@ document.querySelector('#first-button').addEventListener('click' ,function (e) {
    console.log('Add a new todo ...')
 })
 
-document.querySelector('#add-todo').addEventListener('change', function(e){
+const addTodos = document.querySelector('#add-todo').addEventListener('change', function(e){
     console.log(e.target.value)
 })

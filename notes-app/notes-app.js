@@ -29,6 +29,28 @@ newParagraph.textContent = 'This is a new element from JS'// we write the value 
 document.querySelector('body').appendChild(newParagraph) // we add in the body, 1. we call the place that we want to add - 2. we call the value
 */
 
+const filters = {
+    searchText: ''
+}
+
+const renderNotes = function (notes, filters) { // take all the notes and filters and calcule wich one matches with the filters
+    const filteredNotes= notes.filter(function (note) { // if the filter is "Nex" it was one of the titles above
+        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+
+    document.querySelector('#notes').innerHTML ='' //innerHTML in this remove the others because is not the same that the filter (note)
+//    document.querySelector('#notes').innerHTML ='<p>TEST</p>' // in this case we add a new value (p) with a text
+
+    filteredNotes.forEach(function (note){ // we add the notes already filters, result in this case = My next trip
+        const noteEl = document.createElement('p')
+        noteEl.textContent = note.title
+        document.querySelector('#notes').appendChild(noteEl)
+    })
+}
+
+renderNotes(notes, filters) // we call the function to see the the thing before the user iterac with the page 
+
+
 document.querySelector('#create-note').addEventListener('click', function (e){ // we add a button and we asig a function // (1.how we call"a click", 2. what we want to answer)
     //console.log('Did this work?')// answer
     //console.log(e)// we call the event (this is all the thing happen)
@@ -53,5 +75,8 @@ document.querySelector('#remove-all').addEventListener('click', function (e) {
 // h1.application#title*/
 
 document.querySelector('#search-text').addEventListener('input', function(e){ //"change" we call when we touch in another places in the window // "input we call every single change"
-    console.log(e.target.value) // we call the element, and after that we go inside and see the target and we call the value that we write in the target
+   // console.log(e.target.value) // we call the element, and after that we go inside and see the target and we call the value that we write in the target
+        filters.searchText = e.target.value
+        renderNotes(notes, filters)
+        // we call again when the user intereac with the page and change the filter 
 })
