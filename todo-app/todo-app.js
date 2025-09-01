@@ -28,37 +28,38 @@ const filters = {
     searchText: ''
 }
 
-const renderNotes = function (notes, filters){
-    const filterNotes= notes.filter(function (note){
-        
+const renderTodos = function (todos, filters) { 
+    const filteredTodos= todos.filter(function (todo) {
+        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+    const incompleteTodos = filteredTodos.filter (function (todos){ // we creat the .filter to see the thing that we need in the arrat-object
+        return !todos.completed 
+    })
+
+    document.querySelector('#todos').innerHTML = ''
+
+    const sumary = document.createElement('h2') // we create the new value
+    sumary.textContent = `You have ${incompleteTodos.length} todos left.`
+    document.querySelector('#todos').appendChild(sumary)
+    
+    filteredTodos.forEach (function (todo){ // first we call the function with .forEach for to see all the array-object
+        const p = document.createElement('p') 
+        p.textContent = todo.text
+        document.querySelector('#todos').appendChild(p)
     })
 }
 
-const incompleteTodos = todos.filter (function (todos){ // we creat the .filter to see the thing that we need in the arrat-object
-   return !todos.completed 
-})
-
-const sumary = document.createElement('h2') // we create the new value
-sumary.textContent = `You have ${incompleteTodos.length} todos left.`
-document.querySelector('body').appendChild(sumary)
-
-
-todos.forEach (function (todo){ // first we call the function with .forEach for to see all the array-object
-   const p = document.createElement('p') 
-   p.textContent = todo.text
-   document.querySelector('body').appendChild(p)
-})
-/* added the button from here
-const addButton = document.createElement('button')
-addButton.textContent = 'New Button'
-document.querySelector('body').appendChild(addButton)
-*/
+renderTodos(todos, filters)
 
 // Listen for new todo creation
 document.querySelector('#first-button').addEventListener('click' ,function (e) {
-   console.log('Add a new todo ...')
+    console.log('Add a new todo ...')
+})
+document.querySelector('#add-todo').addEventListener('input', function(e){
+    console.log(e.target.value)
 })
 
-const addTodos = document.querySelector('#add-todo').addEventListener('change', function(e){
-    console.log(e.target.value)
+document.querySelector('#search-text').addEventListener('input', function(e){
+    filters.searchText = e.target.value
+    renderTodos(todos, filters)
 })
