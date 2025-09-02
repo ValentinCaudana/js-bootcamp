@@ -57,11 +57,7 @@ document.querySelector('#create-note').addEventListener('click', function (e){ /
     e.target.textContent = 'The button was clicked' // we asig that when we click change the nambe of the button 
 })
 
-document.querySelector('#remove-all').addEventListener('click', function (e) {
-    document.querySelectorAll('.note').forEach(function (note){
-        note.remove()
-    })
-})
+
 
 /* -- Single --
 // p
@@ -79,4 +75,10 @@ document.querySelector('#search-text').addEventListener('input', function(e){ //
         filters.searchText = e.target.value
         renderNotes(notes, filters)
         // we call again when the user intereac with the page and change the filter 
+})
+
+document.querySelector('#name-form').addEventListener('submit', function (e){
+    e.preventDefault()
+    console.log(e.target.elements.firstName.value)
+    e.target.elements.firstName.value= ''
 })

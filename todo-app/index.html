@@ -6,9 +6,11 @@
     </head>
     <body>
         <h1>Todos</h1>
-        <input id="add-todo" type="text" placeholder="Add todo">
         <input id="search-text" type="text" placeholder="Filter todo">
-        <button id="first-button">Add Todo</button>
+        <form id="todo-form">
+            <input type="text" placeholder="Insert todo" name="insertTodo">
+            <button>Submit</button>
+        </form>        
         <div id="todos"></div>
         <script src="todo-app.js"></script>
     </body>
