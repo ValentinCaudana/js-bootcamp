@@ -77,6 +77,11 @@ document.querySelector('#search-text').addEventListener('input', function(e){ //
         // we call again when the user intereac with the page and change the filter 
 })
 
+/* checkbox
 document.querySelector('#for-fun').addEventListener('change', function (e){
     console.log(e.target.checked)
+})*/
+
+document.querySelector('#filter-by').addEventListener('change', function(e){
+    console.log(e.target.value)
 })
