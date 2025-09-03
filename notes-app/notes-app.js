@@ -32,6 +32,26 @@ document.querySelector('body').appendChild(newParagraph) // we add in the body, 
 const filters = {
     searchText: ''
 }
+/* localStorage
+//localStorage.setItem('location', 'Copenhaguen')//setItem is a method to save data, with 2 arguments (1. key - 2. value) FOR CREATE
+//console.log(localStorage.getItem('location'))//getItem method to save data out of local storage  ,just 1 argument(key) FOR READE
+//localStorage.removeItem('location')//removeItem method to delete data of local storage, take 1 argument 
+//localStorage.clear() // clear method delete all the data stored in local storage, no take arguments 
+*/
+/* to show a object
+const user = {
+    name: 'Valentin',
+    age: 26
+}
+
+const userJSON = JSON.stringify(user)
+console.log(userJSON)
+localStorage.setItem('user', userJSON)*/
+
+// to show a string
+const userJSON = localStorage.getItem('user')
+const user = JSON.parse(userJSON)
+console.log(`${user.name} is ${user.age}`)
 
 const renderNotes = function (notes, filters) { // take all the notes and filters and calcule wich one matches with the filters
     const filteredNotes= notes.filter(function (note) { // if the filter is "Nex" it was one of the titles above
