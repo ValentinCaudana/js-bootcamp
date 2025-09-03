@@ -25,14 +25,29 @@ ps.forEach(function(p){
    }
 })*/
 const filters = {
-    searchText: ''
+    searchText: '',
+    hideCompleted: false
 }
 
 const renderTodos = function (todos, filters) { 
-    const filteredTodos= todos.filter(function (todo) {
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    let filteredTodos= todos.filter(function (todo) {
+        // theerd solution 
+        const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        const hideCompleted = !filters.hideCompleted || !todo.completed
+        return searchTextMatch && hideCompleted 
     })
-    const incompleteTodos = filteredTodos.filter (function (todos){ // we creat the .filter to see the thing that we need in the arrat-object
+//seconde solution 
+    //filteredTodos = filteredTodos.filter(function (todo) {
+      // return !filters.hideCompleted || !todo.completed
+/* first solution 
+        if(filters.hideCompleted){
+            return !todo.completed
+        }else {
+            return true
+        }*/
+    //})
+
+    const incompleteTodos = filteredTodos.filter (function (todos){ // we creat the .filter to see the thing that we need in the array-object
         return !todos.completed 
     })
 
@@ -42,7 +57,7 @@ const renderTodos = function (todos, filters) {
     sumary.textContent = `You have ${incompleteTodos.length} todos left.`
     document.querySelector('#todos').appendChild(sumary)
     
-    filteredTodos.forEach (function (todo){ // first we call the function with .forEach for to see all the array-object
+    filteredTodos.forEach (function (todo){ // first we call the function with .forEach to see all the array-object
         const p = document.createElement('p') 
         p.textContent = todo.text
         document.querySelector('#todos').appendChild(p)
@@ -73,3 +88,12 @@ document.querySelector('#todo-form').addEventListener('submit', function (e){
         e.target.elements.insertTodo.value = ''
     
 })
+// 1. Create a checkbox and set up event listener -> "Hide completed"
+// 2- Create new hideCompleted filter (default false)
+// 3. Update hideCompleted an rerender list on checkbox change
+// 4. Set up renderTodos to remove completed items
+document.querySelector('#check-todos').addEventListener('change', function (e){
+    filters.hideCompleted = e.target.checked
+    renderTodos(todos, filters) 
+})
+
