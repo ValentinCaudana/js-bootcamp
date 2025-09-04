@@ -1,4 +1,4 @@
-let notes = []
+const notes = getSavedNotes()
 /* DOM - Document Object Model
 
 // Query and remove
@@ -44,34 +44,6 @@ const userJSON = localStorage.getItem('user')
 const user = JSON.parse(userJSON) //constructing the JavaScript value or object described by the string
 console.log(`${user.name} is ${user.age}`)*/
 
-//Check for existing saved data 
-const noteJSON = localStorage.getItem('notes')
-
-if (noteJSON !== null){
-    notes = JSON.parse(noteJSON)
-}
-
-
-const renderNotes = function (notes, filters) { // take all the notes and filters and calcule wich one matches with the filters
-    const filteredNotes= notes.filter(function (note) { // if the filter is "Nex" it was one of the titles above
-        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
-
-    document.querySelector('#notes').innerHTML ='' //innerHTML in this remove the others because is not the same that the filter (note)
-//    document.querySelector('#notes').innerHTML ='<p>TEST</p>' // in this case we add a new value (p) with a text
-
-    filteredNotes.forEach(function (note){ // we add the notes already filters, result in this case = My next trip
-        const noteEl = document.createElement('p')
-
-        if(note.title.lenght > 0){
-            noteEl.textContent = note.title
-        } else {
-            noteEl.textContent = 'Unnamed note'
-        }       
-        document.querySelector('#notes').appendChild(noteEl)
-    })
-}
-
 renderNotes(notes, filters) // we call the function to see the the thing before the user iterac with the page 
 
 
@@ -80,11 +52,9 @@ document.querySelector('#create-note').addEventListener('click', function (e){ /
         title: '',
         body: ''
     })    
-    localStorage.setItem('notes', JSON.stringify(notes)) // we use that to change the object in a string
+    saveNotes(notes)
     renderNotes(notes, filters)
 })
-
-
 
 /* -- Single --
 // p
