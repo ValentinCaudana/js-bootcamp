@@ -1,13 +1,4 @@
-const notes = [{
-    title: 'My next trip',
-    body: 'I would like to go to Spain'
-}, {
-    title: 'Habbits to work on',
-    body: 'Exercise. Eating a bit better.'
-}, {
-    title: 'Office modification',
-    body: 'Get a new seat'
-}]
+let notes = []
 /* DOM - Document Object Model
 
 // Query and remove
@@ -44,14 +35,22 @@ const user = {
     age: 26
 }
 
-const userJSON = JSON.stringify(user)
+const userJSON = JSON.stringify(user) //static method converts a JavaScript value to a JSON string
 console.log(userJSON)
-localStorage.setItem('user', userJSON)*/
+localStorage.setItem('user', userJSON)
 
 // to show a string
 const userJSON = localStorage.getItem('user')
-const user = JSON.parse(userJSON)
-console.log(`${user.name} is ${user.age}`)
+const user = JSON.parse(userJSON) //constructing the JavaScript value or object described by the string
+console.log(`${user.name} is ${user.age}`)*/
+
+//Check for existing saved data 
+const noteJSON = localStorage.getItem('notes')
+
+if (noteJSON !== null){
+    notes = JSON.parse(noteJSON)
+}
+
 
 const renderNotes = function (notes, filters) { // take all the notes and filters and calcule wich one matches with the filters
     const filteredNotes= notes.filter(function (note) { // if the filter is "Nex" it was one of the titles above
@@ -63,7 +62,12 @@ const renderNotes = function (notes, filters) { // take all the notes and filter
 
     filteredNotes.forEach(function (note){ // we add the notes already filters, result in this case = My next trip
         const noteEl = document.createElement('p')
-        noteEl.textContent = note.title
+
+        if(note.title.lenght > 0){
+            noteEl.textContent = note.title
+        } else {
+            noteEl.textContent = 'Unnamed note'
+        }       
         document.querySelector('#notes').appendChild(noteEl)
     })
 }
@@ -72,9 +76,12 @@ renderNotes(notes, filters) // we call the function to see the the thing before 
 
 
 document.querySelector('#create-note').addEventListener('click', function (e){ // we add a button and we asig a function // (1.how we call"a click", 2. what we want to answer)
-    //console.log('Did this work?')// answer
-    //console.log(e)// we call the event (this is all the thing happen)
-    e.target.textContent = 'The button was clicked' // we asig that when we click change the nambe of the button 
+    notes.push ({
+        title: '',
+        body: ''
+    })    
+    localStorage.setItem('notes', JSON.stringify(notes)) // we use that to change the object in a string
+    renderNotes(notes, filters)
 })
 
 

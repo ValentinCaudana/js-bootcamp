@@ -1,20 +1,9 @@
-// DOM - Document Object Model
-const todos = [{
-    text: `Walk the dog`,
-    completed: true
-}, { 
-    text:`Ride a bike`,
-    completed: false
-}, { 
-    text:`Run with friends`,
-    completed: true
-}, { 
-    text:`Buy food`,
-    completed: true 
-}, { 
-    text:`Help my mother`,
-    completed: false
- }]
+// 1. Delete dummy data
+// 2. read and parse the data when the app starts up
+// 3. Stringify and write the data when new data is added 
+
+
+let todos = []
 
 /*
 const ps = document.querySelectorAll('p') //we select what value we want to finde "p"
@@ -28,6 +17,12 @@ const filters = {
     searchText: '',
     hideCompleted: false
 }
+const todoJSON = localStorage.getItem('todos')
+
+if (todoJSON !== null){
+    todos = JSON.parse(todoJSON)
+}
+
 
 const renderTodos = function (todos, filters) { 
     let filteredTodos= todos.filter(function (todo) {
@@ -84,6 +79,7 @@ document.querySelector('#todo-form').addEventListener('submit', function (e){
             text: newTodoText,
             completed: false
         })*/
+        localStorage.setItem('todos', JSON.stringify(todos)) // we use that to change the object in a string
         renderTodos(todos, filters)
         e.target.elements.insertTodo.value = ''
     
