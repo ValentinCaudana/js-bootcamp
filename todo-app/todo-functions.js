@@ -17,15 +17,18 @@ const saveTodos = function (todos){
 
 // 3. 
 const renderTodos = function (todos, filters) { 
-    let filteredTodos= todos.filter(function (todo) {
+    const filteredTodos= todos.filter(function (todo) {
         const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
         const hideCompleted = !filters.hideCompleted || !todo.completed
+        debugger
         return searchTextMatch && hideCompleted 
     })
+
 
     const incompleteTodos = filteredTodos.filter (function (todos){ // we creat the .filter to see the thing that we need in the array-object
         return !todos.completed 
     })
+
 
     document.querySelector('#todos').innerHTML = ''
 
