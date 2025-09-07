@@ -20,7 +20,7 @@ const renderTodos = function (todos, filters) {
     const filteredTodos= todos.filter(function (todo) {
         const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
         const hideCompleted = !filters.hideCompleted || !todo.completed
-        debugger
+        
         return searchTextMatch && hideCompleted 
     })
 
@@ -43,9 +43,22 @@ const renderTodos = function (todos, filters) {
 
 // 4.
 const generateTodoDOM = function (todo){
-    const p = document.createElement('p') 
-    p.textContent = todo.text
-    return p
+    const todoEl = document.createElement('div') 
+    const checkbox = document.createElement('input')
+    const textEl = document.createElement('span')
+    const button = document.createElement('button')
+
+    checkbox.setAttribute('type', 'checkbox')
+    todoEl.appendChild(checkbox)
+
+    textEl.textContent = todo.text
+    todoEl.appendChild(textEl)
+
+    button.textContent = 'x'
+    todoEl.appendChild(button)
+
+    return todoEl
+    
 }
 
 //5. 
