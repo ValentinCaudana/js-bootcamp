@@ -1,3 +1,4 @@
+
 const notes = getSavedNotes()
 /* DOM - Document Object Model
 
@@ -49,6 +50,7 @@ renderNotes(notes, filters) // we call the function to see the the thing before 
 
 document.querySelector('#create-note').addEventListener('click', function (e){ // we add a button and we asig a function // (1.how we call"a click", 2. what we want to answer)
     notes.push ({
+        id: uuidv4(),
         title: '',
         body: ''
     })    

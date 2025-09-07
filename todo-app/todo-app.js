@@ -3,6 +3,7 @@
 // 3. Stringify and write the data when new data is added 
 
 
+
 const todos = getSavedTodos()
 
 /*
@@ -29,6 +30,7 @@ document.querySelector('#search-text').addEventListener('input', function(e){
 document.querySelector('#todo-form').addEventListener('submit', function (e){
     e.preventDefault() 
     todos.push({
+        id: uuidv4(),
         text: e.target.elements.insertTodo.value,
         completed: false
     })
