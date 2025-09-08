@@ -24,6 +24,26 @@ const removeTodo = function (id) {
     }
 }
 
+// CheckedTodo
+const toggleTodo = function(id){
+    const todo = todos.find(function(todo){
+        return todo.id === id
+    })  
+    if (todo !== undefined){
+        todo.completed = !todo.completed
+    }
+    
+}
+/* my form  
+const checkedTodo = function (completed) {
+    const todoCheck = todos.findIndex(function (todo){
+        return todo.completed === completed
+    })
+    if (todoCheck > -1){
+        todos[todoCheck].completed = !todos[todoCheck].completed
+    }
+}*/
+
 // 3. 
 const renderTodos = function (todos, filters) { 
     const filteredTodos= todos.filter(function (todo) {
@@ -58,7 +78,15 @@ const generateTodoDOM = function (todo){
     const button = document.createElement('button')
 
     checkbox.setAttribute('type', 'checkbox')
+    checkbox.checked = todo.completed
     todoEl.appendChild(checkbox)
+    checkbox.addEventListener('change', function (){
+        toggleTodo(todo.id)
+        //checkedTodo(todo.completed)// my form
+        saveTodos(todos)
+        renderTodos(todos, filters)
+    })
+
 
     textEl.textContent = todo.text
     todoEl.appendChild(textEl)
