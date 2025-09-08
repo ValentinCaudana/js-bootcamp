@@ -32,7 +32,6 @@ const toggleTodo = function(id){
     if (todo !== undefined){
         todo.completed = !todo.completed
     }
-    
 }
 /* my form  
 const checkedTodo = function (completed) {

@@ -49,13 +49,15 @@ renderNotes(notes, filters) // we call the function to see the the thing before 
 
 
 document.querySelector('#create-note').addEventListener('click', function (e){ // we add a button and we asig a function // (1.how we call"a click", 2. what we want to answer)
+    const id = uuidv4()
+    
     notes.push ({
-        id: uuidv4(),
+        id: id,
         title: '',
         body: ''
     })    
     saveNotes(notes)
-    renderNotes(notes, filters)
+    location.assign(`/edit.html#${id}`)
 })
 
 /* -- Single --
