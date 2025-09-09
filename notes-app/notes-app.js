@@ -1,9 +1,9 @@
 
-const notes = getSavedNotes()
+let notes = getSavedNotes()
 /* DOM - Document Object Model
 
 // Query and remove
-// const p = document.querySelector(`p´) // we creat the const and we call the value that we need
+// const p = document.querySelector(`p´) // we create the const and we call the value that we need
 // p.remove() // p is the value that we call and .remove is for delete 
 
 // Query all and remove
@@ -25,7 +25,7 @@ const filters = {
     searchText: ''
 }
 /* localStorage
-//localStorage.setItem('location', 'Copenhaguen')//setItem is a method to save data, with 2 arguments (1. key - 2. value) FOR CREATE
+//localStorage.setItem('location', 'copenhagen')//setItem is a method to save data, with 2 arguments (1. key - 2. value) FOR CREATE
 //console.log(localStorage.getItem('location'))//getItem method to save data out of local storage  ,just 1 argument(key) FOR READE
 //localStorage.removeItem('location')//removeItem method to delete data of local storage, take 1 argument 
 //localStorage.clear() // clear method delete all the data stored in local storage, no take arguments 
@@ -45,10 +45,10 @@ const userJSON = localStorage.getItem('user')
 const user = JSON.parse(userJSON) //constructing the JavaScript value or object described by the string
 console.log(`${user.name} is ${user.age}`)*/
 
-renderNotes(notes, filters) // we call the function to see the the thing before the user iterac with the page 
+renderNotes(notes, filters) // we call the function to see the the thing before the user interact with the page 
 
 
-document.querySelector('#create-note').addEventListener('click', function (e){ // we add a button and we asig a function // (1.how we call"a click", 2. what we want to answer)
+document.querySelector('#create-note').addEventListener('click', function (e){ // we add a button and we asg a function // (1.how we call"a click", 2. what we want to answer)
     const id = uuidv4()
 
     notes.push ({
@@ -57,7 +57,7 @@ document.querySelector('#create-note').addEventListener('click', function (e){ /
         body: ''
     })    
     saveNotes(notes)
-    location.assign(`/edit.html#${id}`)//asignation a location to go
+    location.assign(`/edit.html#${id}`)//assignation a location to go
 })
 
 /* -- Single --
@@ -75,7 +75,7 @@ document.querySelector('#search-text').addEventListener('input', function(e){ //
    // console.log(e.target.value) // we call the element, and after that we go inside and see the target and we call the value that we write in the target
         filters.searchText = e.target.value
         renderNotes(notes, filters)
-        // we call again when the user intereac with the page and change the filter 
+        // we call again when the user interact with the page and change the filter 
 })
 
 /* checkbox
@@ -85,4 +85,11 @@ document.querySelector('#for-fun').addEventListener('change', function (e){
 
 document.querySelector('#filter-by').addEventListener('change', function(e){
     console.log(e.target.value)
+})
+
+window.addEventListener('storage', function(e){
+    if (e.key === 'notes') {
+        notes = JSON.parse(e.newValue)
+        renderNotes(notes, filters)
+    }
 })
