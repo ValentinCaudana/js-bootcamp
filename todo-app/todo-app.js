@@ -7,7 +7,7 @@
 const todos = getSavedTodos()
 
 /*
-const ps = document.querySelectorAll('p') //we select what value we want to finde "p"
+const ps = document.querySelectorAll('p') //we select what value we want to find "p"
 
 ps.forEach(function(p){
    if (p.textContent.includes('the')){ // this is the condition 

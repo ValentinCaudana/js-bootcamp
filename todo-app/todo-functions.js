@@ -53,14 +53,14 @@ const renderTodos = function (todos, filters) {
     })
 
 
-    const incompleteTodos = filteredTodos.filter (function (todos){ // we creat the .filter to see the thing that we need in the array-object
+    const incompleteTodos = filteredTodos.filter (function (todos){ // we create the .filter to see the thing that we need in the array-object
         return !todos.completed 
     })
 
 
     document.querySelector('#todos').innerHTML = ''
 
-    document.querySelector('#todos').appendChild(generateSumaryDom(incompleteTodos))
+    document.querySelector('#todos').appendChild(generateSummaryDom(incompleteTodos))
     
     filteredTodos.forEach (function (todo){ // first we call the function with .forEach to see all the array-object
     
@@ -103,8 +103,8 @@ const generateTodoDOM = function (todo){
 }
 
 //5. 
-const generateSumaryDom = function (incompleteTodos) {
-    const sumary = document.createElement('h2') // we create the new value
-    sumary.textContent = `You have ${incompleteTodos.length} todos left.`
-    return sumary 
+const generateSummaryDom = function (incompleteTodos) {
+    const summary = document.createElement('h2') // we create the new value
+    summary.textContent = `You have ${incompleteTodos.length} todos left.`
+    return summary 
 }
