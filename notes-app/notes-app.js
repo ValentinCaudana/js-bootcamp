@@ -94,38 +94,19 @@ window.addEventListener('storage', function(e){
     }
 })
 
-// Unix Epoch - January 1st 1970 00:00:00
+/*
+const now = moment()
+now.subtract(1, 'w').subtract(20, 'd')
+console.log(now.format('MMMM Do, YYYY')) //(September 14th, 2025) to print the day with the format that we want
+console.log(now.fromNow())//(one month ago) print the time between the moment that we put first and the time that we change after
+const nowTimestamp = now.valueOf()
 
-/*// when we create a new note and save that 
-const now = new Date()
-const timestamp = now.getTime()
+console.log(moment(nowTimestamp).toString())
 
-// we use that after we 
-const myDate = new Date(timestamp)
-console.log(myDate.getFullYear())
-*/
-/* Date string
-const now = new Date()// with out arguments bring me the day actual, but I can set to bring some thing from another day just if I put an argument
-console.log(now.toString())
+now.minute(1)// if we want to call that minute in the time that we call before
+console.log(now.minute())// here we call the minute in the real time*/
 
-console.log(`Year: ${now.getFullYear()}`)
-console.log(`Month: ${now.getMonth()}`)
-console.log(`Day of month: ${now.getDate()}`)
-console.log(`Hour: ${now.getHours()}`)
-console.log(`Minutes: ${now.getMinutes()}`)
-console.log(`Seconds: ${now.getSeconds()}`)*/
+const birthday = moment()
 
-const dateOne = new Date( 'April 30 1999 7:30:00')
-const dateTwo = new Date( 'January 8 1998 7:00:00')
-const dateOneTimestamp = dateOne.getTime()
-const dateTwoTimestamp = dateTwo.getTime()
-
-console.log(dateOneTimestamp)
-console.log(dateTwoTimestamp)
-
-if (dateOneTimestamp < dateTwoTimestamp){
-    console.log(dateOne.toString())
-} else {
-    console.log(dateTwo.toString())
-}
-
+birthday.year(1999).month(3).date(30)
+console.log(birthday.format('MMM D, YYYY'))
