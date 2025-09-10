@@ -1,6 +1,7 @@
 const titleElement =  document.querySelector('#note-title')
 const bodyElement = document.querySelector('#note-body')
 const removeElement = document.querySelector('#remove-note')
+const dateElement = document.querySelector('#last-edited')
 const noteId = location.hash.substring(1)// we use to look the value of id (1.(1) "where we start in the value", 2.() "where we finish") this bring all the value because we don't put the finish
 let notes = getSavedNotes()
 let note = notes.find(function (note) {
@@ -13,14 +14,21 @@ if (note === undefined) {
 
 titleElement.value = note.title
 bodyElement.value = note.body
+dateElement.textContent = generateLastEdited(note.updateAt)
 
 titleElement.addEventListener('input', function (e){
     note.title = e.target.value 
+    note.updateAt = moment().valueOf()
+    dateElement.textContent = generateLastEdited(note.updateAt)
     saveNotes(notes)
 })
 
+
+
 bodyElement.addEventListener('input', function (e){
     note.body = e.target.value 
+    note.updateAt = moment().valueOf()
+    dateElement.textContent = generateLastEdited(note.updateAt)
     saveNotes(notes)
 })
 
@@ -43,6 +51,7 @@ window.addEventListener('storage', function (e){ // we set a receptor of global 
 
     titleElement.value = note.title
     bodyElement.value = note.body
+    dateElement.textContent = generateLastEdited(note.updateAt)
 
     }  
 })

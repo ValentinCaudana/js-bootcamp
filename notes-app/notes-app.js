@@ -50,11 +50,13 @@ renderNotes(notes, filters) // we call the function to see the the thing before 
 
 document.querySelector('#create-note').addEventListener('click', function (e){ // we add a button and we asg a function // (1.how we call"a click", 2. what we want to answer)
     const id = uuidv4()
-
+    const timestamp = moment().valueOf()
     notes.push ({
         id: id,
         title: '',
-        body: ''
+        body: '',
+        createdAt : timestamp,
+        updatedAt: timestamp
     })    
     saveNotes(notes)
     location.assign(`/edit.html#${id}`)//assignation a location to go
@@ -94,19 +96,4 @@ window.addEventListener('storage', function(e){
     }
 })
 
-/*
-const now = moment()
-now.subtract(1, 'w').subtract(20, 'd')
-console.log(now.format('MMMM Do, YYYY')) //(September 14th, 2025) to print the day with the format that we want
-console.log(now.fromNow())//(one month ago) print the time between the moment that we put first and the time that we change after
-const nowTimestamp = now.valueOf()
 
-console.log(moment(nowTimestamp).toString())
-
-now.minute(1)// if we want to call that minute in the time that we call before
-console.log(now.minute())// here we call the minute in the real time*/
-
-const birthday = moment()
-
-birthday.year(1999).month(3).date(30)
-console.log(birthday.format('MMM D, YYYY'))

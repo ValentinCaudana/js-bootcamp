@@ -17,10 +17,10 @@ const saveNotes = function (notes) {
 // Remove a note from the List
 const removeNote = function (id) {
     const noteIndex = notes.findIndex (function (note) {
-        return note.id === id // return true if noteIndex is iqual than id in the function 
+        return note.id === id // return true if noteIndex is equal than id in the function 
     })
     if (noteIndex > -1) { // if the noteIndex is false ...
-        notes.splice(noteIndex, 1)// argunment noteIndex and we want to remove one item
+        notes.splice(noteIndex, 1)// argument noteIndex and we want to remove one item
     }
 }
 
@@ -45,17 +45,16 @@ const generateNotesDOM = function (note) {
     } else {
         textEl.textContent = 'Unnamed note'
     }
-
+    
     textEl.setAttribute('href', `/edit.html#${note.id}`)
     noteEl.appendChild(textEl)
     
-
     return noteEl
 }
 
-// Render aplication notes 
+// Render application notes 
 
-const renderNotes = function (notes, filters) { // take all the notes and filters and calcule wich one matches with the filters
+const renderNotes = function (notes, filters) { // take all the notes and filters and calculate which one matches with the filters
     const filteredNotes= notes.filter(function (note) { // if the filter is "Nex" it was one of the titles above
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
     })
@@ -66,4 +65,10 @@ const renderNotes = function (notes, filters) { // take all the notes and filter
         const noteEl = generateNotesDOM(note)       
         document.querySelector('#notes').appendChild(noteEl)
     })
+    
+}
+
+// Generate the last edited message
+const generateLastEdited = function (timestamp) {
+    return `Last edited ${moment(timestamp).fromNow()}`
 }
