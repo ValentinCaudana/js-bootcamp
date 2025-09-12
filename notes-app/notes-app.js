@@ -22,7 +22,8 @@ document.querySelector('body').appendChild(newParagraph) // we add in the body, 
 */
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    sortBy: 'byEdited'
 }
 /* localStorage
 //localStorage.setItem('location', 'copenhagen')//setItem is a method to save data, with 2 arguments (1. key - 2. value) FOR CREATE
@@ -86,7 +87,8 @@ document.querySelector('#for-fun').addEventListener('change', function (e){
 })*/
 
 document.querySelector('#filter-by').addEventListener('change', function(e){
-    console.log(e.target.value)
+    filters.sortBy = e.target.value
+    renderNotes(notes, filters)
 })
 
 window.addEventListener('storage', function(e){
