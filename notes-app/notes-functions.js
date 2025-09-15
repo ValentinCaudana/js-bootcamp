@@ -1,5 +1,5 @@
 // Read existing notes from localStorage
-const getSavedNotes = function () {
+const getSavedNotes = () => {
     const notesJSON = localStorage.getItem('notes')
 
     if (notesJSON !== null) {
@@ -10,22 +10,20 @@ const getSavedNotes = function () {
 }
 
 // Save the notes to localStorage
-const saveNotes = function (notes) {
+const saveNotes = (notes) => {
     localStorage.setItem('notes', JSON.stringify(notes)) // we use that to save the object in a string
 }
 
 // Remove a note from the List
-const removeNote = function (id) {
-    const noteIndex = notes.findIndex (function (note) {
-        return note.id === id // return true if noteIndex is equal than id in the function 
-    })
+const removeNote = (id) => {
+    const noteIndex = notes.findIndex((note) => note.id === id)
     if (noteIndex > -1) { // if the noteIndex is false ...
         notes.splice(noteIndex, 1)// argument noteIndex and we want to remove one item
     }
 }
 
 // Generate the DOM structure for a note 
-const generateNotesDOM = function (note) {
+const generateNotesDOM = (note) => {
     const noteEl = document.createElement('div')
     const textEl = document.createElement('a')
     const button = document.createElement('button')
@@ -33,7 +31,7 @@ const generateNotesDOM = function (note) {
     //Set up remove note button
     button.textContent = 'x'
     noteEl.appendChild(button)
-    button.addEventListener('click', function () {
+    button.addEventListener('click', () => {
         removeNote(note.id)
         saveNotes(notes)
         renderNotes(notes, filters)
@@ -52,9 +50,9 @@ const generateNotesDOM = function (note) {
     return noteEl
 }
 // Sort Notes by one of three ways
-const sortNotes = function (notes, sortBy) {
+const sortNotes = (notes, sortBy) => {
     if ( sortBy === 'byEdited'){
-        return notes.sort(function (a, b){
+        return notes.sort((a, b) => {
             if (a.updatedAt > b.updatedAt){
                 return -1
             } else if (a.updatedAt < b.updatedAt) {
@@ -64,7 +62,7 @@ const sortNotes = function (notes, sortBy) {
             }
         })
     } else if (sortBy === 'byCreation') {
-        return notes.sort(function (a, b){
+        return notes.sort((a, b) => {
             if (a.createdAt > b.createdAt){
                 return -1
             } else if (a.createdAt < b.createdAt){
@@ -74,7 +72,7 @@ const sortNotes = function (notes, sortBy) {
             }
         })
     } else if (sortBy === 'alphabetically'){
-        return notes.sort(function (a, b){
+        return notes.sort((a, b) => {
             if (a.title.toLowerCase() < b.title.toLowerCase()){
                 return -1
             } else if (a.title.toLowerCase() > b.title.toLowerCase()){
@@ -91,15 +89,14 @@ const sortNotes = function (notes, sortBy) {
 
 // Render application notes 
 
-const renderNotes = function (notes, filters) { // take all the notes and filters and calculate which one matches with the filters
+const renderNotes = (notes, filters) => { // take all the notes and filters and calculate which one matches with the filters
     notes = sortNotes(notes, filters.sortBy)
-    const filteredNotes= notes.filter(function (note) { // if the filter is "Nex" it was one of the titles above
-        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
+    const filteredNotes= notes.filter((note) => note.title.toLowerCase().includes(filters.searchText.toLowerCase()))// if the filter is "Nex" it was one of the titles above
+
 
     document.querySelector('#notes').innerHTML ='' //innerHTML in this remove the others because is not the same that the filter (note)
 
-    filteredNotes.forEach(function (note){ // we add the notes already filters, result in this case = My next trip
+    filteredNotes.forEach((note) => { // we add the notes already filters, result in this case = My next trip
         const noteEl = generateNotesDOM(note)       
         document.querySelector('#notes').appendChild(noteEl)
     })
@@ -107,6 +104,4 @@ const renderNotes = function (notes, filters) { // take all the notes and filter
 }
 
 // Generate the last edited message
-const generateLastEdited = function (timestamp) {
-    return `Last edited ${moment(timestamp).fromNow()}`
-}
+const generateLastEdited = (timestamp) => `Last edited ${moment(timestamp).fromNow()}`
