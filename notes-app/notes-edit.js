@@ -6,7 +6,7 @@ const noteId = location.hash.substring(1)// we use to look the value of id (1.(1
 let notes = getSavedNotes()
 let note = notes.find((note) => note.id === noteId )
 
-if (note === undefined) {
+if (!note) {
     location.assign('/index.html')
 }
 
@@ -41,7 +41,7 @@ window.addEventListener('storage', (e) => { // we set a receptor of global event
         notes = JSON.parse(e.newValue)
         note = notes.find((note) => note.id === noteId )
 
-    if (note === undefined) {
+    if (!note) {
         location.assign('/index.html')
     }
 
