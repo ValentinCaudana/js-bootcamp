@@ -1,7 +1,12 @@
 // 1.
 const getSavedTodos = () => {
     const todoJSON = localStorage.getItem('todos')
-    return todoJSON ? JSON.parse(todoJSON) : []
+
+    try {
+        return todoJSON ? JSON.parse(todoJSON) : []
+    } catch (e) {
+        return []
+    }
      
 }
 

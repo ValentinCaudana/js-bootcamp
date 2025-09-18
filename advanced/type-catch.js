@@ -1,5 +1,5 @@
 const getTip = (amount) => {
-    if (typeof amount === 'number') {
+    if (typeof amount === 'number') { // "typeof" is used to check the type of a value
         return amount * .25
     } else {
         throw Error('Argument must be a number') // we get this if the value in getTip() is not a number "getTip(string)" 
