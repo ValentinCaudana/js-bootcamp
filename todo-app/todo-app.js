@@ -1,8 +1,4 @@
-// 1. Delete dummy data
-// 2. read and parse the data when the app starts up
-// 3. Stringify and write the data when new data is added 
-
-
+'use strict'
 
 const todos = getSavedTodos()
 
