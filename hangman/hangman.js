@@ -1,11 +1,10 @@
-// Set up "status" property with initial value of "playing"
-// Create method for recalculating status to "playing", "finished", or "failed"
-// Call that method after a guess is processed 
-// Use console.log to print the status
+// Disable new guesses unless "playing"
+// Setup a new method to get back a status message
 
-// start the game and see Playing
-// Make two incorrect guesses to see "failed"
-// refresh the browser and guess C, a, and t to see "finished"
+//Playing -> Guesses left: 3
+// Failed -> Nice try! The word was "word".
+// Finished -> Great work! You guessed the word
+
 const Hangman = function (word, remainingGuesses) {
     this.word = word.toLowerCase().split('') // array lowerCase letter 
     this.remainingGuesses = remainingGuesses
@@ -27,6 +26,17 @@ Hangman.prototype.calculateStatus = function () {
     }
 }
 
+Hangman.prototype.getStatusMessage = function () {
+    
+    if (this.status === 'playing') {
+        return `Guesses left: ${this.remainingGuesses}`
+    } else if (this.status === 'failed') {
+        return `Nice try! The word was "${this.word.join('')}"`
+    } else {
+        return `Great work! You guessed the word`
+    }
+}
+
 Hangman.prototype.getPuzzle = function () {
     let puzzle = ''
 
@@ -45,6 +55,10 @@ Hangman.prototype.makeGuess = function (guess) {
     guess = guess.toLowerCase()
 
     const isUnique = !this.guessedLetters.includes(guess) // Check if we guess that letter
+    if (this.status !== 'playing'){
+        return
+    }
+    
     if (isUnique) {
         this.guessedLetters.push(guess) // add the guessedLetters if is unique 
 
