@@ -1,4 +1,4 @@
-
+// myPerson --> Person.prototype --> Object.prototype --> null
 class Person {
     constructor(firstName, lastName, age, likes = []) {
         this.firstName = firstName
@@ -20,11 +20,21 @@ class Person {
     }
 }
 
+class Student extends Person {
+    constructor(firstName, lastName, age, grade, likes) {
+        super(firstName, lastName, age, likes)
+        this.grade = grade
+    }
+    updateGrade(change) {
+        this.grade += change
+    }
+    getBio() {
+        const status = this.grade >= 70 ? 'passing' : 'failing'
+        return `${this.firstName} is ${status} the class.`
+    }
+}
 
-
-const me = new Person('Valentin', 'Caudana', 26, ['Learning', 'Cooking']) // This statement creates me and assigns it the specified values for its properties
-me.setName('Alexis Turner')
-console.log(me.getBio())
-
-const person2 = new Person('Clancey', 'Turner', 51)
-console.log(person2.getBio()) 
+const student1 = new Student ('Valentin', 'Caudana', 26, 80, ['playing basketball', 'cooking'])
+console.log(student1.getBio())
+student1.updateGrade(-40)
+console.log(student1.getBio())
