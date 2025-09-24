@@ -33,7 +33,7 @@ console.log(otherProduct)
 
 const puzzleEl = document.querySelector('#puzzle')
 const guessEl = document.querySelector('#guesses')
-const game1 = new Hangman('Cat', 2)
+const game1 = new Hangman('Car parts', 2)
 puzzleEl.textContent = game1.puzzle
 guessEl.textContent = game1.statusMessage
 
