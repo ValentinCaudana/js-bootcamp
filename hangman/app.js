@@ -16,7 +16,16 @@ window.addEventListener('keypress',  (e) => {
 })
 
 
-// Making an HTTP request
+getPuzzle((error, puzzle) => {
+    if (error) {
+        console.log(`Error: ${error}`)
+    } else {
+        console.log(puzzle)
+    }
+})
+// Here we cannot use a return because the getPuzzle its an eventListener and we have to use the patron "callback"
+
+/* Making an HTTP request
 const request = new XMLHttpRequest()
 
 request.addEventListener('readystatechange', (e) => {
@@ -31,10 +40,7 @@ request.addEventListener('readystatechange', (e) => {
 request.open('GET', 'https://puzzle.mead.io/puzzle?wordCount=3') // first we call the method and second we call the URL
 request.send()
 
-// Make a new request for all countries 
-// Parse the responseText to get back the array of objects
-// Find your country object by it's country code (alpha2Code property)
-// Print the full country name (name property)
+
 const countryCode = 'AR'
 const countryRequest = new XMLHttpRequest()
 
@@ -49,4 +55,4 @@ countryRequest.addEventListener('readystatechange', (e) => {
 
 countryRequest.open('GET', 'https://restcountries.com/v3.1/all?fields=cca2,name')
 countryRequest.send()
-
+*/
