@@ -22,13 +22,10 @@ getPuzzle("2")
     console.log(`Error:${err}`);
   });
 
-getLocation()
-  .then((location) => {
-    return getCountry(location.country);
-  })
-  .then((country) => {
-    console.log(country.name.common);
-  })
-  .catch((err) => {
-    console.log(`Error:${err}`);
-  });
+getCurrentCountry().then((country) => {
+    console.log(country.name.common)
+}).catch((error) => {
+    console.log(error)
+})
+
+
