@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: ['babel-polyfill', "./src/index.js"],
+  entry: ["babel-polyfill", "./src/index.js"],
   output: {
     path: path.resolve(__dirname, "public/scripts"), // __dirname : \Users\Lenovo\desktop\code\js-bootcamp\boilerplate/public/scripts
     filename: "bundle.js",
@@ -23,6 +23,13 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, "public"),
     publicPath: "/scripts/",
+    proxy: {
+      "/api": {
+        target: "https://puzzle.mead.io",
+        changeOrigin: true,
+        secure: true,
+      },
+    },
   },
   devtool: "source-map",
 };
