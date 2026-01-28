@@ -14,14 +14,15 @@ module.exports = {
                 loader: "babel-loader",
                 options: {
                     presets: ["env"],
-                },
-            },
-        }],
+                }
+            }
+        }]
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
         publicPath: '/scripts/'
-    }
+    },
+    devtool: "source-map"
 };
 
 

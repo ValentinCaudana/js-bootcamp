@@ -4,7 +4,8 @@
   "description": "",
   "main": "input.js",
   "scripts": {
-    "dev-server": "set NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server"
+    "dev-server": "set NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --mode development",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && webpack --mode production"
   },
   "author": "",
   "license": "ISC",
