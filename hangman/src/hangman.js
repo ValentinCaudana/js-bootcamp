@@ -40,14 +40,15 @@ class Hangman {
     }
     makeGuess(guess) {
         guess = guess.toLowerCase()
-
-        const isUnique = !this.guessedLetters.includes(guess) // Check if we guess that letter
+        const isUnique = !this.guessedLetters.includes(guess)
+        const isBadGuess = !this.word.includes(guess)
             if (this.status !== 'playing'){
                 return
             }
             if (isUnique) {
-                this.guessedLetters.push(guess) // add the guessedLetters if is unique 
-            if (!this.word.includes(guess)) { // check if it's in the word --> one attempt left
+                this.guessedLetters = [...this.guessedLetters, guess]
+
+            if (isUnique && isBadGuess) { 
                 this.remainingGuesses--
             }
 
